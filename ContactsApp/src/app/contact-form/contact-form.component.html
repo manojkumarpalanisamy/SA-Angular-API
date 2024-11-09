@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <h2 class="text-center">{{ isEditMode ? 'Edit Contact' : 'New Contact' }}</h2>
+    
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          class="form-control"
+          formControlName="firstName"
+          placeholder="Enter first name"
+        />
+        <div *ngIf="contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched" class="text-danger">
+          First Name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          class="form-control"
+          formControlName="lastName"
+          placeholder="Enter last name"
+        />
+        <div *ngIf="contactForm.get('lastName')?.invalid && contactForm.get('lastName')?.touched" class="text-danger">
+          Last Name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email"
+        />
+        <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-danger">
+          A valid email is required
+        </div>
+      </div>
+  
+      <div class="form-group" class="button-group">
+        <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">
+          {{ isEditMode ? 'Update' : 'Save' }}
+        </button>
+        <button type="button" class="btn btn-secondary ml-2" (click)="onCancel()">Cancel</button>
+      </div>
+      
+    </form>
+  </div>
+  

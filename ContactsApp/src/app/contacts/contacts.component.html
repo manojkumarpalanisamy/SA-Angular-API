@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h1 class="d-flex align-items-center">
+    <i class="fab fa-angular me-2" style="color: #dd1b16;"></i>
+    Contacts App
+  </h1>
+  
+    <button class="btn btn-success my-3" (click)="onNewContact()">New</button>
+  
+    <table class="table table-bordered table-striped text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.firstName }}</td>
+          <td>{{ contact.lastName }}</td>
+          <td>{{ contact.email }}</td>
+          <td><button class="btn btn-primary" (click)="onEditContact(contact)">Edit</button></td>
+          <td><button class="btn btn-danger" (click)="onDeleteContact(contact.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
